@@ -22,59 +22,10 @@
 </head>
 <body>
     <div ng-app="myApp" ng-controller="myCtrl">
-        <!-- The Modal -->
- <div class="modal fade" id="myModal">
-    <center>
-        <div class="toast ">
-            <div class="toast-header toasts">
-              Added Successfully
-            </div>
-          </div>
-          </center>
-    <div class="modal-dialog modal-md">
-      <div class="modal-content">
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Add item</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
+    
+        
         <!-- Modal body -->
-        <div class="modal-body">
-            
-            <form id="add_form" class="form-group" style="display:none" >
-                <input type="text" list="names" class="form-control" id="name"  ng-model="name" placeholder="Name" required>
-                <datalist id="names" >
-                    <option ng-repeat="item_name in name_list track by $index" value="{{item_name}}">{{item_name}}
-                </datalist>
-                <br>
-                <input type="number" min="0" class="form-control" ng-model="quantity" placeholder="Quantity" required>
-                <br>
-                    <input type="radio"  ng-model="units" value="kg" >kg
-                    &nbsp;
-                    <input type="radio" ng-model="units" value="grams">grams
-                    &nbsp;
-                    <input type="radio" ng-model="units" value="litre">litre
-                    &nbsp;
-                    <input type="radio" ng-model="units" value="ml">ml
-                    &nbsp;
-                    <input type="radio" ng-model="units" value="box">box
-                    &nbsp;
-                    <input type="radio" ng-model="units" value="pieces">pieces
-                    &nbsp;
-                    <input type="radio" ng-model="units" value="bottle">bottle
-                    &nbsp;
-                    <input type="radio" ng-model="units" value="packet">packet
-                    &nbsp;
-                    <br>
-                    <br>
-                    <center>
-                <button type="submit" class="btn" ng-click="add_item()" id="add_item" >Add</button>
-                </center>
-                </form>
-        </div>
-      </div>
-    </div>
-  </div>
+       
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" title="close" class="closebtn" onclick="closeNav()">&times;</a>
             <div ng-model="nolistsadded" ng-if="nolistsadded">
@@ -110,7 +61,7 @@
                 </div>
           </div>
 <div id="main">
-    <span style="font-size:30px;cursor:pointer" class="title" onclick="openNav()">&#9776;</span><span class="title" style="font-size: 30px;">My List</span>
+    <span style="font-size:30px;cursor:pointer" class="title" onclick="openNav()">&#9776;</span><span class="title" style="font-size: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;My List</span>
     <div id="google_translate_element" style="float:right;margin:10px"></div>
 
 <script type="text/javascript">
@@ -125,6 +76,7 @@ function googleTranslateElementInit() {
 <br>
 <br>
 <div id="list_data" style="display: none" ng-model="theme" >
+    
     <br>
     <center>
     <ul id="menu" ng-repeat="z in pages track by $index" >
@@ -162,11 +114,56 @@ function googleTranslateElementInit() {
         </div>
         <br>
         <br>
-        <br>
+    <button type="button" class="btn" id="add" onclick="showform();">Add Item</button>
+    <br>
     </div>
 </center>
-    <button type="button" class="btn" id="add" data-toggle="modal" data-target="#myModal">Add Item</button>
+<br>
+<div class="add_form" id="form">
+    <div class="modal-header">
+        <h4 >Add item</h4>
+        <button type="button" style="font-size: 15px;color:crimson" class="close" onclick="closeform()">&#9665; Back</button>
+      </div>
+    <form id="add_form" class="form-group"  >
+        <input type="text" list="names" class="form-control" id="name"  ng-model="name" placeholder="Name" >
+        <datalist id="names" >
+            <option ng-repeat="item_name in name_list track by $index" value="{{item_name}}">{{item_name}}
+        </datalist>
+        <br>
+        <input type="number" min="0" class="form-control" ng-model="quantity" placeholder="Quantity" >
+        <br>
+            <input type="radio"  ng-model="units" value="kg" >kg
+            &nbsp;
+            <input type="radio" ng-model="units" value="grams">grams
+            &nbsp;
+            <input type="radio" ng-model="units" value="litre">litre
+            &nbsp;
+            <input type="radio" ng-model="units" value="ml">ml
+            &nbsp;
+            <input type="radio" ng-model="units" value="box">box
+            &nbsp;
+            <input type="radio" ng-model="units" value="pieces">pieces
+            &nbsp;
+            <input type="radio" ng-model="units" value="bottle">bottle
+            &nbsp;
+            <input type="radio" ng-model="units" value="packet">packet
+            &nbsp;
+            <br>
+            <br>
+            <center>
+        <button type="submit" class="btn" ng-click="add_item()" id="add_item" >Add</button>
+        </center>
+        </form>
+        <center>
+            <div class="toast toasts">
+                <div class="toast-header toasts">
+                  Added Successfully
+                </div>
+              </div>
+              </center>
+</div>
     </div>
+    
 </div>
 <script src="script.js"></script>
 </body>

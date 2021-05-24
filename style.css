@@ -1,5 +1,6 @@
-body {
-    font-family: "Lato", sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+body,h1,h2,h3,h4,h5,h6 {
+    font-family: "Nunito", sans-serif;
   }
   
   .sidenav {
@@ -10,7 +11,7 @@ body {
     top: 0;
     left: 0;
     overflow-x: hidden;
-    transition: 0.5s;
+    transition: 0.3s;
     padding-top: 60px;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
   }
@@ -22,6 +23,12 @@ body {
     color: white;
     display: block;
     transition: 0.3s;
+  }
+  .add_form{
+      display: none;
+    margin-left: auto;
+    margin-right: auto;
+    width:50%;
   }
   #main{
       padding-left: 20px;
@@ -62,11 +69,14 @@ body {
       background: white;
   }
   .toasts{
-      background-color: "yellow";
+      background-color: "yellow" !important;
   }
   
   .sidenav a:hover {
     color: black;
+  }
+  .close{
+      outline: none !important;
   }
   
   .sidenav .closebtn {
@@ -81,12 +91,17 @@ body {
       cursor: pointer;
       font-size: 36px;
       float:right;
-      color:white;
       padding-right: 15px;
   }
   .delete_list:hover{
       color:black;
   }
+  .toast .toasts{
+    background-color: mediumseagreen !important;
+    color:white !important;
+    border: none !important;
+    padding: 15px !important;
+}
   .delete_item{
       outline:none;
       cursor: pointer;
@@ -148,6 +163,9 @@ body {
   }
   @media (max-width:768px){
       #my-table{
+          width:90%;
+      }
+      .add_form{
           width:90%;
       }
   }

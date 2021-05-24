@@ -55,6 +55,7 @@ app.controller("myCtrl", ['$scope', '$http','$window',function($scope,$http,$win
         $scope.nolistsadded=true;
         document.getElementById('list_data').style.display="none";
         document.getElementById('add').style.display="none";
+        d
 
     }
     else
@@ -70,7 +71,6 @@ app.controller("myCtrl", ['$scope', '$http','$window',function($scope,$http,$win
             list_items=[];
             list_names.push(list_name);
             localStorage.setItem("list_names",JSON.stringify(list_names));
-            console.log(list_names);
             localStorage.setItem(list_name, JSON.stringify(list_items));
             openNav();
             $scope.nolistsadded=false;
@@ -80,15 +80,21 @@ app.controller("myCtrl", ['$scope', '$http','$window',function($scope,$http,$win
     $scope.delete_list=function(index){
         list_names= $scope.list_names;
         list_name=list_names[index];
-        localStorage.removeItem(list_name);
-        $scope.list_names.splice(index, 1);
-        localStorage.setItem("list_names",JSON.stringify($scope.list_names));
-        if($scope.list_names.length==0)
-        {
-            $scope.nolistsadded=true;
-            document.getElementById('list_data').style.display="none";
-            document.getElementById('add').style.display="none";
+        const check= confirm("Do you really want to delete '"+list_name+"'");
+        if(check){
+            localStorage.removeItem(list_name);
+            $scope.list_names.splice(index, 1);
+            localStorage.setItem("list_names",JSON.stringify($scope.list_names));
+            if($scope.list_names.length==0)
+            {
+                $scope.nolistsadded=true;
+                document.getElementById('list_data').style.display="none";
+                document.getElementById('add').style.display="none";
+                document.getElementById('form').style.display="none";
+
+            }
         }
+        
     };
     $scope.paginate=function(index){
         $scope.current_page=index;
@@ -131,6 +137,8 @@ app.controller("myCtrl", ['$scope', '$http','$window',function($scope,$http,$win
         }
         document.getElementById('list_data').style.display="block";
         document.getElementById('add').style.display="block";
+    document.getElementById('form').style.display="none";
+
         closeNav();
         $scope.paginate(0); 
     };
@@ -140,17 +148,17 @@ app.controller("myCtrl", ['$scope', '$http','$window',function($scope,$http,$win
         var quantity=$scope.quantity;
         var units=$scope.units;
         if(name && quantity && units){
-        items=JSON.parse(localStorage.getItem(list_names[current_index]));
-        var item={name:name,quantity:quantity,units:units};
-        items.push(item);
-        if($scope.pages.length*items_per_page<items.length)
-        {
-            $scope.pages.push($scope.pages.length+1);
-        }
-        localStorage.setItem(list_names[current_index],JSON.stringify(items));
-        $scope.paginate($scope.pages.length-1);
-        document.getElementById('add_form').reset();
-        $('.toast').toast({delay: 3000});
+            items=JSON.parse(localStorage.getItem(list_names[current_index]));
+            var item={name:name,quantity:quantity,units:units};
+            items.push(item);
+            if($scope.pages.length*items_per_page<items.length)
+            {
+                $scope.pages.push($scope.pages.length+1);
+            }
+            localStorage.setItem(list_names[current_index],JSON.stringify(items));
+            $scope.paginate($scope.pages.length-1);
+            document.getElementById('add_form').reset();
+            $('.toast').toast({delay: 3000,position:'bottom center'});
             $('.toast').toast('show');
         } 
         if(items.length>0){
@@ -164,25 +172,29 @@ app.controller("myCtrl", ['$scope', '$http','$window',function($scope,$http,$win
         }
     };
     $scope.delete_item=function(index){
-        items=JSON.parse(localStorage.getItem(list_names[current_index]));
-        items.splice($scope.current_page*items_per_page+index,1);
-        localStorage.setItem(list_names[current_index],JSON.stringify(items));
-        if($scope.pages.length*items_per_page-items.length>=items_per_page){
-            $scope.pages.pop();
+        const check= confirm("Do you really want to delete this item");
+        if(check){
+            items=JSON.parse(localStorage.getItem(list_names[current_index]));
+            items.splice($scope.current_page*items_per_page+index,1);
+            localStorage.setItem(list_names[current_index],JSON.stringify(items));
+            if($scope.pages.length*items_per_page-items.length>=items_per_page){
+                $scope.pages.pop();
+            }
+            if($scope.current_page<$scope.pages.length)
+                $scope.paginate($scope.current_page);
+            else
+                $scope.paginate($scope.pages.length-1);
+            if(items.length>0){
+                $scope.noitemsadded=false;
+                $scope.header=true;
+            }
+            else
+            {
+                $scope.noitemsadded=true;
+                $scope.header=false;
+            }
         }
-        if($scope.current_page<$scope.pages.length)
-            $scope.paginate($scope.current_page);
-        else
-            $scope.paginate($scope.pages.length-1);
-        if(items.length>0){
-            $scope.noitemsadded=false;
-            $scope.header=true;
-        }
-        else
-        {
-            $scope.noitemsadded=true;
-            $scope.header=false;
-        }
+        
     };
     $scope.change_color=function(color){
         theme=color;
@@ -208,3 +220,13 @@ app.controller("myCtrl", ['$scope', '$http','$window',function($scope,$http,$win
     
 
 }]);
+
+function showform(){
+    document.getElementById('list_data').style.display="none";
+    document.getElementById('form').style.display="block";
+    
+}
+function closeform(){
+    document.getElementById('list_data').style.display="block";
+    document.getElementById('form').style.display="none";
+}
