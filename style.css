@@ -1,0 +1,154 @@
+body {
+    font-family: "Lato", sans-serif;
+  }
+  
+  .sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+  }
+  
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+  }
+  #main{
+      padding-left: 20px;
+    transition: 0.3s;
+  }
+  .collapse{
+      background-color: white;
+      padding:5px;
+      margin: 5px;
+      border-radius: 8px;
+      width:90%;
+  }
+  .theme{
+      padding: 20px;
+      width:30px;
+      height: 30px;
+      border-radius: 50%;
+      border: none;
+      outline: none;
+      margin: 5px;
+  }
+  .theme:focus,.theme:active {
+    outline: none !important;
+    box-shadow: none;
+ }
+  /* Table styles. */
+  #my-table{
+      width:50%;
+  }
+  #my-table td,
+  th {
+      text-align: center;
+      padding: .5rem 1rem;
+      border: none;
+  }
+  #my-table th {
+      border:none;
+      background: white;
+  }
+  .toasts{
+      background-color: "yellow";
+  }
+  
+  .sidenav a:hover {
+    color: black;
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-size: 36px;
+    margin-left: 50px;
+    color:white;
+  }
+  .delete_list{
+      cursor: pointer;
+      font-size: 36px;
+      float:right;
+      color:white;
+      padding-right: 15px;
+  }
+  .delete_list:hover{
+      color:black;
+  }
+  .delete_item{
+      outline:none;
+      cursor: pointer;
+      border:none;
+      background-color: transparent;
+  }
+  .delete_item:hover{
+      text-decoration: underline;
+  
+  }
+  #add_item{
+      height: 50px;
+      width:100%;
+      border: none;
+      color:white;
+      font-weight: bold;
+  }
+  #add{
+      display: none;
+      right:0;
+      bottom:0;
+      height: 50px;
+      width:100%;
+      z-index:1;
+      position: fixed;
+      border: none;
+      font-weight: bold;
+      color:white;
+  }
+  #add:hover,#add_item:hover{
+      opacity: 0.9;
+  }
+  ul , li {
+    display:inline;
+    zoom:1;
+  }
+  .page_numbers{
+      width:100px;
+      height:80px;
+      cursor: pointer;
+      padding: 10px;
+      font-weight: bold;
+      border-radius:5px;
+  }
+  msg{
+      color: white;
+  }
+  .active{
+      color:white;
+  }
+  .noitemsadded{
+      font-size:30px;
+      font-weight: bold;
+  }
+  @media screen and (max-height: 450px) {
+     
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+  @media (max-width:768px){
+      #my-table{
+          width:90%;
+      }
+  }
+  
