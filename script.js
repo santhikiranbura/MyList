@@ -38,6 +38,7 @@ app.controller("myCtrl", ['$scope', '$http','$window',function($scope,$http,$win
         $scope.name_list=response.data.names;
     });
     list_names=JSON.parse(localStorage.getItem("list_names"));
+    console.log(list_names);
     if(list_names===null)
         list_names=[];
     $scope.list_names = list_names;
@@ -55,8 +56,6 @@ app.controller("myCtrl", ['$scope', '$http','$window',function($scope,$http,$win
         $scope.nolistsadded=true;
         document.getElementById('list_data').style.display="none";
         document.getElementById('add').style.display="none";
-        d
-
     }
     else
         $scope.nolistsadded=false;

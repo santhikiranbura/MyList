@@ -27,7 +27,8 @@
         <!-- Modal body -->
        
         <div id="mySidenav" class="sidenav">
-            <a href="javascript:void(0)" title="close" class="closebtn" onclick="closeNav()">&times;</a>
+            
+            <a href="javascript:void(0)" title="close" class="closebtn" style="float:right" onclick="closeNav()">&times;</a>
             <div ng-model="nolistsadded" ng-if="nolistsadded">
                 <center>
                     <msg>
@@ -59,19 +60,20 @@
                 <div  id="demo" class="collapse">
                 <button class="theme" ng-repeat="color in ['gray','rgba(25,40,73)','red','green','teal','purple','DarkTurquoise ','darkkhaki','mediumorchid','darkslategray','violet','seagreen','orange','blue','slateblue','coral','tomato','#e75480','#34568b','dodgerblue','crimson','mediumseagreen','brown','#AC4FC6']" ng-style="{'background-color': color}" ng-click="change_color(color)">&nbsp;</button>
                 </div>
+                <div id="google_translate_element"></div>
+
+            <script type="text/javascript">
+            function googleTranslateElementInit() {
+              new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+            }
+            </script>
+            
+            <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+            
           </div>
 <div id="main">
     <span style="font-size:30px;cursor:pointer" class="title" onclick="openNav()">&#9776;</span><span class="title" style="font-size: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;My List</span>
-    <div id="google_translate_element" style="float:right;margin:10px"></div>
-
-<script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
-}
-</script>
-
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
+   
     <br>
 <br>
 <br>
